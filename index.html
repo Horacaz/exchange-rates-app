@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./styles/main.css">
+    <title>Exchange Rates App</title>
+</head>
+<body>
+  <div class="row flex container m-4 p-4">
+    <div class="col-4">
+        <div id="title" class="position-relative">
+            <img id="exchange-icon" src="./assets/exchange-icon.svg" alt="">
+            <h1 class="fs-1 fw-bolder">Exchanges <br>Rates App</h1>
+            <p class="fs-4">Select a base and target curreny and type the desired 
+                amount you'd like to convert and see it's exchange rates</p>
+        </div>
+    </div>
+    <div class="col align-self-center">
+        <div id="exchange">
+            <form class="position-relative text-center exchange-panel d-flex flex-column align-self-center justify-content-center ">
+                <div class='m-3 p-2 row d-flex justify-content-center' id="a">
+                    <div id="a-col" class="col rounded-pill fw-bold">
+                        <label id="a-1" for="base-amount">Base Currency</label>
+                    </div>
+                    <div class="col rounded-pill" id="a-2"> 
+                        <select class="base-currency">
+                            <option value="0">Select</option>
+                        </select>
+                    </div>
+                    <div class="col rounded-pill" id="a-3">
+                        <input type="number" placeholder="100" id="base-amount">
+                    </div>
+                </div>
+                <div class="ml-2">
+                    <img id='arrow' src="./assets/arrow-icon.svg" alt="">
+                </div>
+                <div class='m-3 p-2 row d-flex justify-content-center' id="b">
+                    <div  id="b-col" class="col rounded-pill fw-bold">
+                        <label id="b-1" for="base-amount">Target Currency</label>
+                    </div>
+                    <div class="col rounded-pill" id="b-2"> 
+                        <select class="target-currency">
+                            <option value="0">Select</option>
+                        </select>
+                    </div>
+                    <div class="col rounded-pill" id="a-3">
+                        <input type="number" placeholder="100" id="target-amount">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+  </div>
+  <section>
+    <div class="currency-rates text-center m-5">
+        <h3 class="fs-2">Exchange rates for <span id="base-currency-title">USD</span> as of <span id="current-date">Fri, 24 Jun 2020</span>.</h3>
+        <table class="table fs-5">
+            <thead>
+                <tr class="fs-5">
+                   <th id='table-currency-code-title'>Currency Code</th>
+                   <th id='table-currency-name-title'>Currency Name</th>
+                   <th id='table-currency-rate-title'>Conversion Rate</th>
+                </tr>
+            </thead>
+            <tbody id="currency-table">
+                <tr class="table fs-5">
+                    <td class="table-currency-code">AFN</td>
+                    <td class="table-currency-name">Afghan Afghani</td>
+                    <td class="table-currency-rate">0.2139</td>
+                </tr>
+                <tr class="table">
+                    <td class="table-currency-code">AFN</td>
+                    <td class="table-currency-name">Afghan Afghani</td>
+                    <td class="table-currency-rate">0.2139</td>
+                </tr>
+                <tr class="table">
+                    <td class="table-currency-code">AFN</td>
+                    <td class="table-currency-name">Afghan Afghani</td>
+                    <td class="table-currency-rate">0.2139</td>
+                </tr>
+                <tr class="table">
+                    <td class="table-currency-code">AFN</td>
+                    <td class="table-currency-name">Afghan Afghani</td>
+                    <td class="table-currency-rate">0.2139</td>
+                </tr>
+                <tr class="table">
+                    <td class="table-currency-code">AFN</td>
+                    <td class="table-currency-name">Afghan Afghani</td>
+                    <td class="table-currency-rate">0.2139</td>
+                </tr>
+                <tr class="table">
+                    <td class="table-currency-code">AFN</td>
+                    <td class="table-currency-name">Afghan Afghani</td>
+                    <td class="table-currency-rate">0.2139</td>
+                </tr>
+                <tr class="table">
+                    <td class="table-currency-code">AFN</td>
+                    <td class="table-currency-name">Afghan Afghani</td>
+                    <td class="table-currency-rate">0.2139</td>
+                </tr>
+                <tr class="table">
+                    <td class="table-currency-code">AFN</td>
+                    <td class="table-currency-name">Afghan Afghani</td>
+                    <td class="table-currency-rate">0.2139</td>
+                </tr>
+                <tr class="table">
+                    <td class="table-currency-code">AFN</td>
+                    <td class="table-currency-name">Afghan Afghani</td>
+                    <td class="table-currency-rate">0.2139</td>
+                </tr>
+                <tr class="table">
+                    <td class="table-currency-code">AFN</td>
+                    <td class="table-currency-name">Afghan Afghani</td>
+                    <td class="table-currency-rate">0.2139</td>
+                </tr>
+                <tr class="table">
+                    <td class="table-currency-code">AFN</td>
+                    <td class="table-currency-name">Afghan Afghani</td>
+                    <td class="table-currency-rate">0.2139</td>
+                </tr>
+                <tr class="table">
+                    <td class="table-currency-code">AFN</td>
+                    <td class="table-currency-name">Afghan Afghani</td>
+                    <td class="table-currency-rate">0.2139</td>
+                </tr>
+                <tr class="table">
+                    <td class="table-currency-code">AFN</td>
+                    <td class="table-currency-name">Afghan Afghani</td>
+                    <td class="table-currency-rate">0.2139</td>
+                </tr>
+                <tr class="table">
+                    <td class="table-currency-code">AFN</td>
+                    <td class="table-currency-name">Afghan Afghani</td>
+                    <td class="table-currency-rate">0.2139</td>
+                </tr>
+                <tr class="table">
+                    <td class="table-currency-code">AFN</td>
+                    <td class="table-currency-name">Afghan Afghani</td>
+                    <td class="table-currency-rate">0.2139</td>
+                </tr>
+                <tr class="table">
+                    <td class="table-currency-code">AFN</td>
+                    <td class="table-currency-name">Afghan Afghani</td>
+                    <td class="table-currency-rate">0.2139</td>
+                </tr>
+                <tr class="table">
+                    <td class="table-currency-code">AFN</td>
+                    <td class="table-currency-name">Afghan Afghani</td>
+                    <td class="table-currency-rate">0.2139</td>
+                </tr>
+                <tr class="table">
+                    <td class="table-currency-code">AFN</td>
+                    <td class="table-currency-name">Afghan Afghani</td>
+                    <td class="table-currency-rate">0.2139</td>
+                </tr>
+
+            </tbody>
+       </table>
+    </div>
+  </section>
+</body>
+</html>

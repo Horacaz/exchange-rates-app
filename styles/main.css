@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+  
+#exchange-icon{
+    position: absolute;
+    left: 175px;
+    top: -40px;
+}
+  ::-webkit-scrollbar-thumb {
+    background: #ff6000;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #D9D9D9;
+  }
+
+#a-col, #b-col{
+    position: relative;
+    left: 50px;
+    background-color: #ff6000;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+}
+
+#a-1, #b-1{
+    padding: 5px;
+}
+#a-2, #b-2{
+    background-color: #D9D9D9;
+    color: #000000;
+    padding: 5px;
+}
+
+#a-3, #b-3{
+    position: relative;
+    left: -50px;
+    background-color: rgba(217, 217, 217, 0.5) !important;
+    color: #000000;
+}
+select{
+    border: none !important; 
+    background-color: #D9D9D9;
+    color: #000000;
+    text-align: center;
+}
+
+input{
+    border: none !important; 
+    background-color: transparent;
+    color: #000000;
+    padding: 5px;
+    text-align: center;
+}
+input:focus{
+    outline: none !important;
+}
+:root{
+    --main-color: #ff6000;
+    --secondary-color: #D9D9D9;
+    --secondary-color-transparent: rgba(217, 217, 217, 0.5);
+}
+
+body{
+   
+    background-image: url("../assets/pattern-randomized.png");
+    background-repeat: repeat;
+    background-size: 370px;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Title */
+
+.title, h1{
+    color: #ff6000;
+}
+
+.title, p{
+    color: #000000;
+}
+
+/* Currency Input */
+
+#base-currency-title, #current-date{
+    color: var(--main-color);
+}
+
+/* Table */
+
+table{
+    border-collapse: separate;
+    border-spacing: 20px 10px;
+}
+
+#table-currency-code-title,
+#table-currency-name-title,
+#table-currency-rate-title{
+    background-color: var(--main-color);
+    font-weight: bolder;
+    color: #FFFFFF;
+}
+
+tr.table{
+   background-color: var(--secondary-color);
+   font-weight: bold;
+}
+
+.table > :not(:first-child){
+    border-top: none;
+}
