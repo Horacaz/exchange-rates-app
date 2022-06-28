@@ -10,29 +10,30 @@
 </head>
 <body>
 <div class="container">
-    <div class="row m-1 p-1">
-        <div class="col-6">
+    <div class="row m-3 p-3">
+        <div class="col-5">
             <h1 id="title">Exchange Rates App</h1>
             <p class="fw-bold md-fs-5">Select a base and target currency and type the desired amount you'd like to convert and see its exchange rates.</p>
         </div>
-        <div class="col d-flex flex-column ">
-            <div class="m-auto">
-                <label for="">Base Currency
-                    <select name="" id="">
+        <div class="col-1"></div>
+        <div class="col">
+            <div class="d-flex">
+                <label id="base-currency-label" class="flex-grow-1 rounded-pill my-2 p-2" for="">Base Currency
+                </label>
+                    <select id="base-currenc" class="text-center rounded-pill my-2 px-3" name="" id="">
                         <option value="">Select</option>
                         <option value="USD">USD</option>
                     </select>
-                    <input type="number">
-                </label>
+                    <input id="base-currency-amount" class="text-center rounded-pill my-2 px-1" type="number">
             </div>
-            <div class="m-auto">
-                <label for="">Target Currency
-                    <select name="" id="">
+            <div class="d-flex">
+                <label id="target-currency-label" class="flex-grow-1 rounded-pill my-2 p-2" for="">Target Currency
+                </label>
+                    <select id="target-currenc" class="text-center rounded-pill my-2 px-3" name="" id="">
                         <option value="">Select</option>
                         <option value="USD">USD</option>
                     </select>
-                    <input type="number">
-                </label>
+                    <input id="target-currency-amount" class="text-center rounded-pill my-2 px-1" type="number">
             </div>
         </div>
     </div>
