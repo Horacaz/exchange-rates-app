@@ -48,25 +48,23 @@ body{
 
 /* Exchange Input */
 
-#base-currency-label,
-#target-currency-label{
-background-color: var(--main-color);
-box-shadow: 30px 0px var(--main-color);
-text-align: center;
-color: #FFFFFF;
-}
-
-#base-currenc, 
-#target-currenc{
-    background-color: #D9D9D9;
+#base-currency, 
+#target-currency{
+    background-color: var(--main-color);
+    letter-spacing: 1px;
+    color: #ffffff;
+    font-weight: bold;
     outline: none;
     border: none;
+    max-width: 35%;
+    box-shadow: 30px 0px  var(--main-color);;
 }
 
-#base-currency-amount, 
-#target-currency-amount{
-    background-color: #d9d9d97c;
-    box-shadow: -30px 0px  #d9d9d97c;
+#base-amount, 
+#target-amount{
+    letter-spacing: 1px;
+    color: #ff6000;
+    background-color: var(--secondary-color);
     outline: none;
     border: none;
     font-weight: bolder;
@@ -99,4 +97,8 @@ tr{
 
 .table > :not(:first-child){
     border-top: none;
+}
+
+* { 
+    outline: solid 0.25rem rgba(151, 78, 78, 0.5); 
 }

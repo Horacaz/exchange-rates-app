@@ -1,5 +1,5 @@
-export const $baseCurrency = document.querySelector('.base-currency');
-const $targetCurrency = document.querySelector('.target-currency');
+export const $baseCurrency = document.querySelector('#base-currency');
+const $targetCurrency = document.querySelector('#target-currency');
 
 export function createBaseCurrencyOptions(currencyNames) {
   const currencies = currencyNames.supported_codes;
@@ -48,6 +48,8 @@ export function createExchanteRatesTable(currencyRates, currencyNames) {
     $tableCurrencyRate.textContent = `${currencyRate[currencies[i][0]]}`;
 
     const $tableRow = document.createElement('tr');
+    $tableRow.setAttribute('class', 'table');
+
     $tableRow.appendChild($tableCurrencyCode);
     $tableRow.appendChild($tableCurrencyName);
     $tableRow.appendChild($tableCurrencyRate);
@@ -58,7 +60,7 @@ export function createExchanteRatesTable(currencyRates, currencyNames) {
 
 export function exchangeRatesDate(baseCurrency) {
   const currentDate = baseCurrency.time_last_update_utc;
-  const currentCurrency = document.querySelector('#base-currency');
+  const currentCurrency = document.querySelector('#base-currency-title');
   currentCurrency.textContent = baseCurrency.base_code;
   const $currentDate = document.querySelector('#current-date');
   $currentDate.textContent = currentDate.slice(0, 16);
@@ -66,7 +68,7 @@ export function exchangeRatesDate(baseCurrency) {
 
 export function calculateExchange(currencyRates, amount, targetCurrency) {
   if (targetCurrency === '0') return;
-  const $results = document.querySelector('#results');
+  const $results = document.querySelector('#target-amount');
   const conversionRates = currencyRates.conversion_rates[targetCurrency];
   $results.value = conversionRates * amount;
 }
