@@ -11,17 +11,12 @@ import {
 
 function updateExchange(currencies) {
   $baseCurrency.oninput = async () => {
-    class Currency {
-      constructor(currency) {
-        this.currency = currency;
-      }
-    }
     const baseCurrency = $baseCurrency.value;
-    const currency = new Currency(await getCurrencyRates(baseCurrency));
+    const currencyRates = await getCurrencyRates(baseCurrency);
 
-    createExchanteRatesTable(currency, currencies);
-    exchangeRatesDate(currency);
-    getExchange(currency);
+    createExchanteRatesTable(currencyRates, currencies);
+    exchangeRatesDate(currencyRates);
+    getExchange(currencyRates);
   };
 }
 
