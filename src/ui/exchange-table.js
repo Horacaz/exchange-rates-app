@@ -1,26 +1,3 @@
-export const $baseCurrency = document.querySelector('#base-currency');
-const $targetCurrency = document.querySelector('#target-currency');
-
-export function createBaseCurrencyOptions(currencyNames) {
-  const currencies = currencyNames.supported_codes;
-  for (let i = 0; i < currencies.length; i += 1) {
-    const currency = document.createElement('option');
-    currency.setAttribute('value', currencies[i][0]);
-    currency.textContent = `${currencies[i][0]} - ${currencies[i][1]}`;
-    $baseCurrency.appendChild(currency);
-  }
-}
-
-export function createTargetCurrencyOptions(currencyNames) {
-  const currencies = currencyNames.supported_codes;
-  for (let i = 0; i < currencies.length; i += 1) {
-    const currency = document.createElement('option');
-    currency.setAttribute('value', currencies[i][0]);
-    currency.textContent = `${currencies[i][0]} - ${currencies[i][1]}`;
-    $targetCurrency.appendChild(currency);
-  }
-}
-
 function clearCurrencyTable() {
   const $table = document.querySelector('#currency-table');
   if ($table) {
@@ -64,23 +41,4 @@ export function exchangeRatesDate(baseCurrency) {
   currentCurrency.textContent = baseCurrency.base_code;
   const $currentDate = document.querySelector('#current-date');
   $currentDate.textContent = currentDate.slice(0, 16);
-}
-
-export function calculateExchange(currencyRates, amount, targetCurrency) {
-  if (targetCurrency === '0') return;
-  const $results = document.querySelector('#target-amount');
-  const conversionRates = currencyRates.conversion_rates[targetCurrency];
-  $results.value = conversionRates * amount;
-}
-
-export function getExchange(currencyRates) {
-  const currencyRate = currencyRates;
-
-  const $amount = document.querySelector('#base-amount');
-
-  $amount.oninput = () => {
-    const targetCurrency = $targetCurrency.value;
-    const currentAmount = Number($amount.value);
-    calculateExchange(currencyRate, currentAmount, targetCurrency);
-  };
 }

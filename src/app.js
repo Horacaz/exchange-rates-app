@@ -3,29 +3,17 @@ import { getCurrencyRates, getCurrenciesNames } from './services/exchanges.js';
 import {
   createBaseCurrencyOptions,
   createTargetCurrencyOptions,
-  createExchanteRatesTable,
-  exchangeRatesDate,
-  getExchange,
-  $baseCurrency,
-} from './ui/ui.js';
+  handleExchange,
+} from './ui/currency-input.js';
 
 function updateExchange(currencies) {
-  $baseCurrency.oninput = async () => {
-    const baseCurrency = $baseCurrency.value;
-    const currencyRates = await getCurrencyRates(baseCurrency);
-
-    createExchanteRatesTable(currencyRates, currencies);
-    exchangeRatesDate(currencyRates);
-    getExchange(currencyRates);
-  };
+  handleExchange(currencies, getCurrencyRates);
 }
 
-async function initialize() {
+export default async function initialize() {
   const currenciesNames = await getCurrenciesNames();
 
   createBaseCurrencyOptions(currenciesNames);
   createTargetCurrencyOptions(currenciesNames);
   updateExchange(currenciesNames);
 }
-
-initialize();
