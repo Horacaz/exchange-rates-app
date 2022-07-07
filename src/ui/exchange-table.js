@@ -5,10 +5,11 @@ function clearCurrencyTable() {
   }
 }
 
-export function createExchanteRatesTable(currencyRates, currencyNames) {
+export function createExchanteRatesTable(baseCurrency, currencyNames) {
   clearCurrencyTable();
   const currencies = currencyNames.supported_codes;
-  const currencyRate = currencyRates.conversion_rates;
+  const currencyRate = baseCurrency.conversionRates;
+
   const $table = document.querySelector('#currency-table');
 
   for (let i = 0; i < currencies.length; i += 1) {
@@ -36,9 +37,10 @@ export function createExchanteRatesTable(currencyRates, currencyNames) {
 }
 
 export function exchangeRatesDate(baseCurrency) {
-  const currentDate = baseCurrency.time_last_update_utc;
+  const currentDate = baseCurrency.lastUpdate;
   const currentCurrency = document.querySelector('#base-currency-title');
-  currentCurrency.textContent = baseCurrency.base_code;
+
+  currentCurrency.textContent = baseCurrency.baseCode;
   const $currentDate = document.querySelector('#current-date');
   $currentDate.textContent = currentDate.slice(0, 16);
 }

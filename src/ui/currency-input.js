@@ -6,15 +6,25 @@ import {
 const $baseCurrency = document.querySelector('#base-currency');
 const $targetCurrency = document.querySelector('#target-currency');
 
-function calculateExchange(currencyRates, amount, targetCurrency) {
+class Currency {
+  constructor(currencyData) {
+    this.baseCode = currencyData.base_code;
+    this.conversionRates = currencyData.conversion_rates;
+    this.lastUpdate = currencyData.time_last_update_utc;
+  }
+}
+
+function calculateExchange(currency, amount, targetCurrency) {
   if (targetCurrency === '0') return;
+
   const $results = document.querySelector('#target-amount');
-  const conversionRates = currencyRates.conversion_rates[targetCurrency];
-  $results.value = conversionRates * amount;
+  const conversionRate = currency.conversionRates[targetCurrency];
+  $results.value = conversionRate * amount;
 }
 
 export function createBaseCurrencyOptions(currencyNames) {
   const currencies = currencyNames.supported_codes;
+
   for (let i = 0; i < currencies.length; i += 1) {
     const currency = document.createElement('option');
     currency.setAttribute('value', currencies[i][0]);
@@ -33,24 +43,21 @@ export function createTargetCurrencyOptions(currencyNames) {
   }
 }
 
-function getExchange(currencyRates) {
-  const currencyRate = currencyRates;
-
+function getExchange(baseCurrency) {
   const $amount = document.querySelector('#base-amount');
 
   $amount.oninput = () => {
     const targetCurrency = $targetCurrency.value;
     const currentAmount = Number($amount.value);
-    calculateExchange(currencyRate, currentAmount, targetCurrency);
+    calculateExchange(baseCurrency, currentAmount, targetCurrency);
   };
 }
 
 export function handleExchange(currencies, callBackFunction) {
   $baseCurrency.oninput = async () => {
-    const baseCurrency = $baseCurrency.value;
-    const currencyRates = await callBackFunction(baseCurrency);
-    createExchanteRatesTable(currencyRates, currencies);
-    exchangeRatesDate(currencyRates);
-    getExchange(currencyRates);
+    const baseCurrency = new Currency(await callBackFunction($baseCurrency.value));
+    createExchanteRatesTable(baseCurrency, currencies);
+    exchangeRatesDate(baseCurrency);
+    getExchange(baseCurrency);
   };
 }

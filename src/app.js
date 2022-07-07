@@ -1,4 +1,4 @@
-import { getCurrencyRates, getCurrenciesNames } from './services/exchanges.js';
+import { getCurrencyRates, getCurrenciesNames } from './services/load-currency.js';
 
 import {
   createBaseCurrencyOptions,
