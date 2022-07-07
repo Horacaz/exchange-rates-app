@@ -4,7 +4,7 @@ import {
   createBaseCurrencyOptions,
   createTargetCurrencyOptions,
   handleExchange,
-} from './ui/currency-input.js';
+} from './ui/currency-exchange.js';
 
 function updateExchange(currencies) {
   handleExchange(currencies, getCurrencyRates);

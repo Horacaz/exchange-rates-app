@@ -3,7 +3,6 @@ export function getCurrencyRatesFromStorage(base) {
   if (baseCurrency === null) {
     throw new Error('The searched currency was not found.');
   }
-  console.log(baseCurrency);
   return baseCurrency;
 }
 
@@ -12,14 +11,13 @@ export function getCurrenciesNamesFromStorage() {
   if (currencies === null) {
     throw new Error('The currencies were not found.');
   }
-  console.log(currencies);
   return currencies;
 }
 
-export function saveCurrenciesNamesInStorage() {
-
+export function saveCurrenciesNamesInStorage(currencies, data) {
+  localStorage.setItem(currencies, JSON.stringify(data));
 }
 
-export function saveCurrencyRatesInStorage() {
-
+export function saveCurrencyRatesInStorage(base, data) {
+  localStorage.setItem(base, JSON.stringify(data));
 }
