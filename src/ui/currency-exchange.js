@@ -56,12 +56,25 @@ function exchangeRatesDate(baseCurrency) {
   $currentDate.textContent = currentDate.slice(0, 16);
 }
 
+function showCurrencyEquivalency(baseCurrency, conversionRate, targetCurrency) {
+  const $equivalency = document.querySelector('#equivalency');
+  const $baseEquivalency = document.querySelector('#base-equivalency');
+  const $targetEquivalency = document.querySelector('#target-equivalency');
+
+  $baseEquivalency.textContent = `1 ${baseCurrency.baseCode}`;
+  $targetEquivalency.textContent = `${conversionRate} ${targetCurrency}`;
+  if ($equivalency.classList.contains('d-none')) {
+    $equivalency.classList.remove('d-none');
+  }
+}
+
 function calculateExchange(currency, amount, targetCurrency) {
   if (targetCurrency === '0') return;
 
   const $results = document.querySelector('#target-amount');
   const conversionRate = currency.conversionRates[targetCurrency];
   $results.value = conversionRate * amount;
+  showCurrencyEquivalency(currency, conversionRate, targetCurrency);
 }
 
 export function createBaseCurrencyOptions(currencyNames) {
