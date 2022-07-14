@@ -12,5 +12,8 @@
     },
     "rules": {
         "import/extensions": ["error", "always"]
-    }
-}
+    },
+    {
+        "plugins": ["jest"]
+      }
+} 
