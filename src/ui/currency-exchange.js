@@ -1,13 +1,6 @@
 const $baseCurrency = document.querySelector('#base-currency');
 const $targetCurrency = document.querySelector('#target-currency');
-
-class Currency {
-  constructor(currencyData) {
-    this.baseCode = currencyData.base_code;
-    this.conversionRates = currencyData.conversion_rates;
-    this.lastUpdate = currencyData.time_last_update_utc;
-  }
-}
+import mapCurrency from "../mappers/currency.js";
 
 function clearCurrencyTable() {
   const $table = document.querySelector('#currency-table');
@@ -16,25 +9,25 @@ function clearCurrencyTable() {
   }
 }
 
-function createExchanteRatesTable(baseCurrency, currencyNames) {
+function createExchanteRatesTable(baseCurrency, currencies) {
   clearCurrencyTable();
-  const currencies = currencyNames.supported_codes;
+  const currenciesNames = currencies.currenciesNames;
   const currencyRate = baseCurrency.conversionRates;
 
   const $table = document.querySelector('#currency-table');
 
-  for (let i = 0; i < currencies.length; i += 1) {
+  for (let i = 0; i < currenciesNames.length; i += 1) {
     const $tableCurrencyCode = document.createElement('td');
     $tableCurrencyCode.setAttribute('class', 'table-currency-code');
-    $tableCurrencyCode.textContent = `${currencies[i][0]}`;
+    $tableCurrencyCode.textContent = `${currenciesNames[i][0]}`;
 
     const $tableCurrencyName = document.createElement('td');
     $tableCurrencyName.setAttribute('class', 'table-currency-name');
-    $tableCurrencyName.textContent = `${currencies[i][1]}`;
+    $tableCurrencyName.textContent = `${currenciesNames[i][1]}`;
 
     const $tableCurrencyRate = document.createElement('td');
     $tableCurrencyRate.setAttribute('class', 'table-currency-rate');
-    $tableCurrencyRate.textContent = `${currencyRate[currencies[i][0]]}`;
+    $tableCurrencyRate.textContent = `${currencyRate[currenciesNames[i][0]]}`;
 
     const $tableRow = document.createElement('tr');
     $tableRow.setAttribute('class', 'table');
@@ -68,32 +61,32 @@ function showCurrencyEquivalency(baseCurrency, conversionRate, targetCurrency) {
   }
 }
 
-function calculateExchange(currency, amount, targetCurrency) {
+function calculateExchange(baseCurrency, amount, targetCurrency) {
   if (targetCurrency === '0') return;
 
   const $results = document.querySelector('#target-amount');
-  const conversionRate = currency.conversionRates[targetCurrency];
+  const conversionRate = baseCurrency.conversionRates[targetCurrency];
   $results.value = conversionRate * amount;
-  showCurrencyEquivalency(currency, conversionRate, targetCurrency);
+  showCurrencyEquivalency(baseCurrency, conversionRate, targetCurrency);
 }
 
-export function createBaseCurrencyOptions(currencyNames) {
-  const currencies = currencyNames.supported_codes;
+export function createBaseCurrencyOptions(currencies) {
+  const currenciesNames = currencies.currenciesNames;
 
-  for (let i = 0; i < currencies.length; i += 1) {
+  for (let i = 0; i < currenciesNames.length; i += 1) {
     const currency = document.createElement('option');
-    currency.setAttribute('value', currencies[i][0]);
-    currency.textContent = `${currencies[i][0]} - ${currencies[i][1]}`;
+    currency.setAttribute('value', currenciesNames[i][0]);
+    currency.textContent = `${currenciesNames[i][0]} - ${currenciesNames[i][1]}`;
     $baseCurrency.appendChild(currency);
   }
 }
 
-export function createTargetCurrencyOptions(currencyNames) {
-  const currencies = currencyNames.supported_codes;
-  for (let i = 0; i < currencies.length; i += 1) {
+export function createTargetCurrencyOptions(currencies) {
+  const currenciesNames = currencies.currenciesNames;
+  for (let i = 0; i < currenciesNames.length; i += 1) {
     const currency = document.createElement('option');
-    currency.setAttribute('value', currencies[i][0]);
-    currency.textContent = `${currencies[i][0]} - ${currencies[i][1]}`;
+    currency.setAttribute('value', currenciesNames[i][0]);
+    currency.textContent = `${currenciesNames[i][0]} - ${currenciesNames[i][1]}`;
     $targetCurrency.appendChild(currency);
   }
 }
@@ -110,7 +103,7 @@ function getExchange(baseCurrency) {
 
 export function handleExchange(currencies, callBackFunction) {
   $baseCurrency.oninput = async () => {
-    const baseCurrency = new Currency(await callBackFunction($baseCurrency.value));
+    const baseCurrency = await mapCurrency(await callBackFunction($baseCurrency.value));
     createExchanteRatesTable(baseCurrency, currencies);
     exchangeRatesDate(baseCurrency);
     getExchange(baseCurrency);

@@ -1,4 +1,5 @@
-import { getCurrencyRates, getCurrenciesNames } from './services/load-currency.js';
+import { getCurrencyRates, 
+  getCurrenciesNames } from './services/load-currency.js';
 
 import {
   createBaseCurrencyOptions,
@@ -6,12 +7,14 @@ import {
   handleExchange,
 } from './ui/currency-exchange.js';
 
+import mapCurrencies from './mappers/currencies.js'
+
 function updateExchange(currencies) {
   handleExchange(currencies, getCurrencyRates);
 }
 
 export default async function initialize() {
-  const currenciesNames = await getCurrenciesNames();
+  const currenciesNames = await mapCurrencies(await getCurrenciesNames());
 
   createBaseCurrencyOptions(currenciesNames);
   createTargetCurrencyOptions(currenciesNames);
