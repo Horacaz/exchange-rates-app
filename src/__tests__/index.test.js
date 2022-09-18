@@ -1,3 +1,9 @@
-test(' 2 + 2 = 4 ', () => {
-  expect(2 + 2).toBe(4);
+/// <reference types= '@types/jest'/>
+import initialize from "../app.js";
+import "../../index.js";
+
+jest.mock("../app.js", () => jest.fn());
+
+test("Initializes Pokedex App", () => {
+  expect(initialize).toHaveBeenCalledTimes(1);
 });

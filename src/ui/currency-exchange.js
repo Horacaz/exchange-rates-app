@@ -1,5 +1,3 @@
-const $baseCurrency = document.querySelector('#base-currency');
-const $targetCurrency = document.querySelector('#target-currency');
 import mapCurrency from "../mappers/currency.js";
 
 function clearCurrencyTable() {
@@ -71,6 +69,7 @@ function calculateExchange(baseCurrency, amount, targetCurrency) {
 }
 
 export function createBaseCurrencyOptions(currencies) {
+  const $baseCurrency = document.querySelector('#base-currency');
   const currenciesNames = currencies.currenciesNames;
 
   for (let i = 0; i < currenciesNames.length; i += 1) {
@@ -82,6 +81,7 @@ export function createBaseCurrencyOptions(currencies) {
 }
 
 export function createTargetCurrencyOptions(currencies) {
+  const $targetCurrency = document.querySelector('#target-currency');
   const currenciesNames = currencies.currenciesNames;
   for (let i = 0; i < currenciesNames.length; i += 1) {
     const currency = document.createElement('option');
@@ -95,6 +95,7 @@ function getExchange(baseCurrency) {
   const $amount = document.querySelector('#base-amount');
 
   $amount.oninput = () => {
+    const $targetCurrency = document.querySelector('#target-currency');
     const targetCurrency = $targetCurrency.value;
     const currentAmount = Number($amount.value);
     calculateExchange(baseCurrency, currentAmount, targetCurrency);
@@ -102,6 +103,7 @@ function getExchange(baseCurrency) {
 }
 
 export function handleExchange(currencies, callBackFunction) {
+  const $baseCurrency = document.querySelector('#base-currency');
   $baseCurrency.oninput = async () => {
     const baseCurrency = await mapCurrency(await callBackFunction($baseCurrency.value));
     createExchanteRatesTable(baseCurrency, currencies);
