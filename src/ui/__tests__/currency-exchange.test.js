@@ -5,7 +5,7 @@
 /// <reference types = '@types/jest' />
 const $ = require('jquery');
 
-import htmlFixture from  '../__tests__/currency-exchange.fixture.js'
+import htmlFixture from  '../currency-exchange-fixture.js'
 import currencyFixture from './currency.json'
 import currenciesFixture from  './currencies.json'
 
@@ -15,6 +15,9 @@ import {
 
 import * as mapMock from '../../mappers/currency.js'; 
 
+/// esto está mal nombrado porque sólo las clases van en PascalCase,
+//// esos son 2 objetos
+/////(instancias de una clase) 
 const Currencies = {
   currenciesNames : currenciesFixture.supported_codes
 }

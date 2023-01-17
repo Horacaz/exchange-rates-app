@@ -1,5 +1,4 @@
 import Currency from "../entities/currency.js";
-  
 
 export default async function mapCurrency(currencyData){
 const {
