@@ -1,5 +1,5 @@
-export default class Currencies{
-    constructor(currenciesNames){
-      this.currenciesNames = currenciesNames;
-    }
+export default class Currencies {
+  constructor(currenciesNames) {
+    this.currenciesNames = currenciesNames;
   }
+}

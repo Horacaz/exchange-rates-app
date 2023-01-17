@@ -4,7 +4,8 @@
   "description": "A simple Exchange Rate  App made using exchange-rate-api.com",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "eslint": "eslint src/** --fix"
   },
   "author": "Horacio Cazavant",
   "license": "MIT",
@@ -20,9 +21,9 @@
     "@types/jest": "^28.1.5",
     "babel-jest": "^28.1.2",
     "cypress": "^10.2.0",
-    "eslint": "^8.19.0",
+    "eslint": "^8.32.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-import": "^2.27.5",
     "jest": "^28.1.1",
     "jest-environment-jsdom": "^28.1.3"
   }
