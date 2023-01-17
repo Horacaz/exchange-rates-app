@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "eslint": "eslint src/** --fix"
+    "eslint": "eslint src/**"
   },
   "author": "Horacio Cazavant",
   "license": "MIT",
