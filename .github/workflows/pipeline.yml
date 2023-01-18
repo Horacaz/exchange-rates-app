@@ -2,13 +2,15 @@ name: Deployment Pipeline
 
 on:
   push:
-    branches:
-      - test-ts
-
+  pull_request:
+      branches:
+      - main
 jobs: 
   deploy: 
     runs-on: ubuntu-latest
     steps: 
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action
       - name: Checkout
         uses: actions/checkout@v3
         with:
