@@ -9,15 +9,22 @@ jobs:
   deploy: 
     runs-on: ubuntu-latest
     steps: 
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
           node-version: 18
       - name: Install dependencies
-        run: npm install --no-audit --no-fund --no-optional
+        run: npm ci
       - name: Lint
         run: npm run eslint
-      - name: Test
+      - name: Unit Test
         run: npm run test
+      - name: Cypress Run
+        uses: cypress-io/github-action@v5.2.0
+        with: 
+          browser: electron
+          spec: cypress/e2e/app.cy.js
