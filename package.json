@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "eslint": "eslint src/**",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "server":"http-server"
   },
   "author": "Horacio Cazavant",
   "license": "MIT",

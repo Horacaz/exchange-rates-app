@@ -23,6 +23,8 @@ jobs:
         run: npm run eslint
       - name: Unit Test
         run: npm run test
+      - name: Start http-server
+        run: npm run server
       - name: Cypress Run
         uses: cypress-io/github-action@v5.0.5
         with: 
