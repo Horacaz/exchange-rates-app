@@ -129,3 +129,4 @@ dist
 # cypress
 
 cypress/support
+cypress/videos

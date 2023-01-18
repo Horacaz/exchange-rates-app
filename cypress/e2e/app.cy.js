@@ -5,7 +5,7 @@ beforeEach(() => {
 
 describe('Visit Exchange Rates App', () => {
   it('Homepage displays', () => {
-    cy.visit('http://192.168.0.17:8080');
+    cy.visit('http://127.0.0.1:8080');
     cy.get('[data-cy="title"]')
       .should('have.text', 'Exchange Rates App');
   });
