@@ -2,9 +2,7 @@ import mapCurrency from '../mappers/currency.js';
 
 function clearCurrencyTable() {
   const $table = document.querySelector('#currency-table');
-  if ($table) {
-    $table.replaceChildren();
-  }
+  $table.replaceChildren();
 }
 
 function createExchanteRatesTable(baseCurrency, currencies) {
@@ -60,8 +58,6 @@ function showCurrencyEquivalency(baseCurrency, conversionRate, targetCurrency) {
 }
 
 function calculateExchange(baseCurrency, amount, targetCurrency) {
-  if (targetCurrency === '0') return;
-
   const $results = document.querySelector('#target-amount');
   const conversionRate = baseCurrency.conversionRates[targetCurrency];
   $results.value = conversionRate * amount;
@@ -91,14 +87,18 @@ export function createTargetCurrencyOptions(currencies) {
   }
 }
 
-function getExchange(baseCurrency) {
+function handleExchangeCalculation(baseCurrency, amount) {
+  const $targetCurrency = document.querySelector('#target-currency');
+  const targetCurrency = $targetCurrency.value;
+  const currentAmount = Number(amount);
+  if (targetCurrency.value !== '0') calculateExchange(baseCurrency, currentAmount, targetCurrency);
+}
+
+function getExchange(baseCurrency, callBackFunction) {
   const $amount = document.querySelector('#base-amount');
 
   $amount.oninput = () => {
-    const $targetCurrency = document.querySelector('#target-currency');
-    const targetCurrency = $targetCurrency.value;
-    const currentAmount = Number($amount.value);
-    calculateExchange(baseCurrency, currentAmount, targetCurrency);
+    callBackFunction(baseCurrency, $amount.value);
   };
 }
 
@@ -108,6 +108,6 @@ export function handleExchange(currencies, callBackFunction) {
     const baseCurrency = await mapCurrency(await callBackFunction($baseCurrency.value));
     createExchanteRatesTable(baseCurrency, currencies);
     exchangeRatesDate(baseCurrency);
-    getExchange(baseCurrency);
+    getExchange(baseCurrency, handleExchangeCalculation);
   };
 }

@@ -3,7 +3,7 @@
  */
 
 /// <reference types = '@types/jest' />
-import htmlFixture from '../currency-exchange-fixture.js';
+import htmlFixture from '../__fixtures__/currency-exchange-fixture.js';
 import currencyFixture from './currency.json';
 import currenciesFixture from './currencies.json';
 
@@ -15,14 +15,11 @@ import * as mapMock from '../../mappers/currency.js';
 
 const $ = require('jquery');
 
-/// esto está mal nombrado porque sólo las clases van en PascalCase,
-/// / esos son 2 objetos
-/// //(instancias de una clase)
-const Currencies = {
+const currencies = {
   currenciesNames: currenciesFixture.supported_codes,
 };
 
-const Currency = {
+const currency = {
   baseCode: currencyFixture.base_code,
   conversionRates: currencyFixture.conversion_rates,
   lastUpdate: currencyFixture.time_last_update_utc,
@@ -30,11 +27,11 @@ const Currency = {
 
 beforeEach(() => {
   const map = jest.spyOn(mapMock, 'default');
-  map.mockImplementation(() => Currency);
+  map.mockImplementation(() => currency);
 
   document.body.innerHTML = htmlFixture;
   const callBackMock = () => jest.fn();
-  handleExchange(Currencies, callBackMock);
+  handleExchange(currencies, callBackMock);
   $('#base-currency').trigger('oninput');
 });
 
@@ -71,17 +68,21 @@ test('Currency result should be correctly calculated 1 USD to ARS (142.1134)', (
 });
 
 test('Currency base options should be created', () => {
-  createBaseCurrencyOptions(Currencies);
+  createBaseCurrencyOptions(currencies);
   expect(document.querySelectorAll('#base-currency option').length).toBe(163);
 });
 
 test('Currency target options should be created', () => {
-  createTargetCurrencyOptions(Currencies);
+  createTargetCurrencyOptions(currencies);
   expect(document.querySelectorAll('#target-currency option').length).toBe(163);
 });
 
-test('Exchange should not be executed if no target currency is selected', () => {
-  document.querySelector('#base-amount').value = '1';
+test('Exchange executes on valid Target currency, skips otherwise', () => {
+  document.querySelector('#base-amount').value = 1;
+  document.querySelector('#target-currency').value = 'ARS';
+  $('#base-amount').trigger('oninput');
+  expect(document.querySelector('#target-amount').value).toBe('142.1134');
+
   document.querySelector('#target-currency').value = '0';
   $('#base-amount').trigger('oninput');
   expect(document.querySelector('#target-amount').value).toBe('');
