@@ -91,7 +91,7 @@ function handleExchangeCalculation(baseCurrency, amount) {
   const $targetCurrency = document.querySelector('#target-currency');
   const targetCurrency = $targetCurrency.value;
   const currentAmount = Number(amount);
-  if (targetCurrency.value !== '0') calculateExchange(baseCurrency, currentAmount, targetCurrency);
+  if (targetCurrency !== '0' && targetCurrency !== undefined) calculateExchange(baseCurrency, currentAmount, targetCurrency);
 }
 
 function getExchange(baseCurrency, callBackFunction) {

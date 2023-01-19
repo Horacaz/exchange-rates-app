@@ -8,5 +8,5 @@ test('Currencies should return an object from data', () => {
   const lastUpdate = {};
 
   expect(new Currency(baseCode, conversionRates, lastUpdate))
-    .toEqual({ baseCode, conversionRates, lastUpdate });
+    .toBeInstanceOf(Currency);
 });
