@@ -7,7 +7,7 @@
     "test": "jest",
     "eslint": "eslint src/** cypress/e2e",
     "cypress:open": "cypress open",
-    "server":"http-server"
+    "start":"http-server"
   },
   "author": "Horacio Cazavant",
   "license": "MIT",
