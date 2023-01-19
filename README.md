@@ -1,3 +1,5 @@
+[![Deployment Pipeline](https://github.com/Horacaz/exchange-rates-app/actions/workflows/pipeline.yml/badge.svg?branch=test-ts)](https://github.com/Horacaz/exchange-rates-app/actions/workflows/pipeline.yml)
+
 # Exchange-rates-app
  
 A simple Exchange Rates App using exchange-rates-api.com. It has been made using Bootstrap and tested with Jest and Cypress. WIP
