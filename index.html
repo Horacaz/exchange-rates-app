@@ -13,7 +13,7 @@
     <div class="row m-1 p-1 m-md-3 p-md-3">
         <div class="col m-2 p-2">
             <div class="m-2 fs-5">
-                <h1 id="title">Exchange Rates App</h1>
+                <h1 data-cy="title" id="title">Exchange Rates App</h1>
                 <p class="fw-bold">Select a base and target currency and type the desired amount you'd like to convert and see its exchange rates.</p>
             </div>
         </div>
@@ -21,19 +21,19 @@
             <label id="base-currency-label" class="rounded-pill m-1 p-1 fw-bold" for="">
                 Base Currency</label>
             <div class="d-flex pb-3">
-                <select id="base-currency" class="text-center rounded-pill" name="" id="">
+                <select data-cy="base-currency" id="base-currency" class="text-center rounded-pill" name="" id="">
                     <option value="0">Select</option>
                 </select>
-                <input id="base-amount" class="text-center rounded-pill" type="number">
+                <input data-cy="base-currency-amount" id="base-amount" class="text-center rounded-pill" type="number">
             </div>
-            <p class="d-none h5 m-1 pb-1 fw-bold" id="equivalency"><span id="base-equivalency"></span> is equivalent to <span id="target-equivalency"></span>.</p>
+            <p data-cy="equivalency" class="d-none h5 m-1 pb-1 fw-bold" id="equivalency"><span id="base-equivalency"></span> is equivalent to <span id="target-equivalency"></span>.</p>
             <label id="target-currency-label" class="rounded-pill m-1 p-1 fw-bold" for="">
                 Target Currency</label>
             <div class="d-flex">
-                <select id="target-currency" class="text-center rounded-pill" name="" id="">
+                <select data-cy="target-currency" id="target-currency" class="text-center rounded-pill" name="" id="">
                     <option value="0">Select</option>
                 </select>
-                <input id="target-amount" class="text-center rounded-pill" type="number">
+                <input data-cy="target-currency-amount" id="target-amount" class="text-center rounded-pill" type="number">
             </div>
         </div>
     </div>
@@ -48,7 +48,7 @@
                        <th id='table-currency-rate-title'>Conversion Rate</th>
                     </tr>
                 </thead>
-                <tbody id="currency-table">
+                <tbody data-cy="currency-table" id="currency-table">
                 </tbody>
             </table>
         </div>

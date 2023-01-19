@@ -1,4 +1,4 @@
-import mapCurrency from "../mappers/currency.js";
+import mapCurrency from '../mappers/currency.js';
 
 function clearCurrencyTable() {
   const $table = document.querySelector('#currency-table');
@@ -9,7 +9,7 @@ function clearCurrencyTable() {
 
 function createExchanteRatesTable(baseCurrency, currencies) {
   clearCurrencyTable();
-  const currenciesNames = currencies.currenciesNames;
+  const { currenciesNames } = currencies;
   const currencyRate = baseCurrency.conversionRates;
 
   const $table = document.querySelector('#currency-table');
@@ -70,7 +70,7 @@ function calculateExchange(baseCurrency, amount, targetCurrency) {
 
 export function createBaseCurrencyOptions(currencies) {
   const $baseCurrency = document.querySelector('#base-currency');
-  const currenciesNames = currencies.currenciesNames;
+  const { currenciesNames } = currencies;
 
   for (let i = 0; i < currenciesNames.length; i += 1) {
     const currency = document.createElement('option');
@@ -82,7 +82,7 @@ export function createBaseCurrencyOptions(currencies) {
 
 export function createTargetCurrencyOptions(currencies) {
   const $targetCurrency = document.querySelector('#target-currency');
-  const currenciesNames = currencies.currenciesNames;
+  const { currenciesNames } = currencies;
   for (let i = 0; i < currenciesNames.length; i += 1) {
     const currency = document.createElement('option');
     currency.setAttribute('value', currenciesNames[i][0]);

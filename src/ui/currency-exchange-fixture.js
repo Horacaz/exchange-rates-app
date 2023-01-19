@@ -46,4 +46,4 @@ export default `
 </div>
 <script type="module" src="./index.js"></script>
 </body>
-</html>`
+</html>`;
