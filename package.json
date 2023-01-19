@@ -4,7 +4,7 @@
   "description": "A simple Exchange Rate  App made using exchange-rate-api.com",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest test.js",
     "eslint": "eslint src/** cypress/e2e",
     "cypress:open": "cypress open",
     "start":"http-server"
