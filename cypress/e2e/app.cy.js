@@ -18,28 +18,22 @@ describe('Exchange Rate Service Displays', () => {
       .should('contain.text', 'USD');
   });
 
-  it('Currency Table is generated on user input selection', () => {
+  it('Currency Table is generated after selecting a Base Currency', () => {
     cy.get('[data-cy="currency-table"]')
       .children()
       .should('have.length', '162');
   });
 
-  it('Currency Exchange Between Base and Target based on amount', () => {
-    cy.get('[data-cy="base-currency"]')
-      .select('USD');
-    cy.get('[data-cy="target-currency"]')
-      .select('ARS');
+  it('Currency Exchange between Base and Target based on Amount', () => {
+    cy.currenciesSelection();
     cy.get('[data-cy="base-currency-amount"]')
       .type('1');
     cy.get('[data-cy="target-currency-amount"]')
       .should('have.value', '141.4841');
   });
 
-  it('Equivalency is properly show on exchange', () => {
-    cy.get('[data-cy="base-currency"]')
-      .select('USD');
-    cy.get('[data-cy="target-currency"]')
-      .select('ARS');
+  it('Equivalency is properly shown on exchange', () => {
+    cy.currenciesSelection();
     cy.get('[data-cy="equivalency"]')
       .should('contain.text', '1 USD is equivalent to 141.4841 ARS.');
   });
