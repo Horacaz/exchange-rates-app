@@ -7,7 +7,7 @@
     "test": "jest test.js",
     "eslint": "eslint src/** cypress/e2e",
     "cypress:open": "cypress open",
-    "start":"http-server"
+    "start": "http-server"
   },
   "author": "Horacio Cazavant",
   "license": "MIT",
@@ -28,6 +28,8 @@
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-import": "^2.27.5",
     "jest": "^28.1.1",
-    "jest-environment-jsdom": "^28.1.3"
+    "jest-environment-jsdom": "^28.1.3",
+    "webpack": "^5.76.3",
+    "webpack-cli": "^5.0.1"
   }
 }
