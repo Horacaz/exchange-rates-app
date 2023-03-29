@@ -3,17 +3,19 @@
  */
 
 /// <reference types = '@types/jest' />
-import htmlFixture from '../__fixtures__/currency-exchange-fixture.js';
-import currencyFixture from './currency.json';
-import currenciesFixture from './currencies.json';
+import htmlFixture from "../__fixtures__/currency-exchange-fixture.js";
+import currencyFixture from "./currency.json";
+import currenciesFixture from "./currencies.json";
 
 import {
-  createBaseCurrencyOptions, createTargetCurrencyOptions, handleExchange,
-} from '../currency-exchange.js';
+  createBaseCurrencyOptions,
+  createTargetCurrencyOptions,
+  handleExchange,
+} from "../currency-exchange.js";
 
-import * as mapMock from '../../mappers/currency.js';
+import * as mapMock from "../../mappers/currency.js";
 
-const $ = require('jquery');
+const $ = require("jquery");
 
 const currencies = {
   currenciesNames: currenciesFixture.supported_codes,
@@ -26,64 +28,66 @@ const currency = {
 };
 
 beforeEach(() => {
-  const map = jest.spyOn(mapMock, 'default');
+  const map = jest.spyOn(mapMock, "default");
   map.mockImplementation(() => currency);
 
   document.body.innerHTML = htmlFixture;
   const callBackMock = () => jest.fn();
   handleExchange(currencies, callBackMock);
-  $('#base-currency').trigger('oninput');
+  $("#base-currency").trigger("oninput");
 });
 
-test('Exchange table should be generated and consist of 163 rows', () => {
-  expect(document.querySelectorAll('tr').length).toBe(163);
+test("Exchange table should be generated and consist of 163 rows", () => {
+  expect(document.querySelectorAll("tr").length).toBe(163);
 });
 
-test('Date of currency rate last update should be present', () => {
-  expect(document.querySelector('#base-currency-title').textContent)
-    .toBe('USD');
-  expect(document.querySelector('#current-date').textContent)
-    .toBe('Thu, 15 Sep 2022');
+test("Date of currency rate last update should be present", () => {
+  expect(document.querySelector("#base-currency-title").textContent).toBe(
+    "USD"
+  );
+  expect(document.querySelector("#current-date").textContent).toBe(
+    "Thu, 15 Sep 2022"
+  );
 });
 
-test('Equivalence of currency should be shown', () => {
-  document.querySelector('#base-amount').value = '1';
-  $('#base-amount').trigger('oninput');
+test("Equivalence of currency should be shown", () => {
+  document.querySelector("#base-amount").value = "1";
+  $("#base-amount").trigger("oninput");
 
-  const $results = document.querySelector('#target-amount');
-  const $baseEquivalency = document.querySelector('#base-equivalency');
-  const $targetEquivalency = document.querySelector('#target-equivalency');
+  const $results = document.querySelector("#target-amount");
+  const $baseEquivalency = document.querySelector("#base-equivalency");
+  const $targetEquivalency = document.querySelector("#target-equivalency");
 
-  expect($results.value).toBe('142.1134');
-  expect($baseEquivalency.textContent).toBe('1 USD');
-  expect($targetEquivalency.textContent).toBe('142.1134 ARS');
+  expect($results.value).toBe("142.1134");
+  expect($baseEquivalency.textContent).toBe("1 USD");
+  expect($targetEquivalency.textContent).toBe("142.1134 ARS");
 });
 
-test('Currency result should be correctly calculated 1 USD to ARS (142.1134)', () => {
-  document.querySelector('#base-amount').value = '1';
-  $('#base-amount').trigger('oninput');
+test("Currency result should be correctly calculated 1 USD to ARS (142.1134)", () => {
+  document.querySelector("#base-amount").value = "1";
+  $("#base-amount").trigger("oninput");
 
-  const $results = document.querySelector('#target-amount');
-  expect($results.value).toBe('142.1134');
+  const $results = document.querySelector("#target-amount");
+  expect($results.value).toBe("142.1134");
 });
 
-test('Currency base options should be created', () => {
+test("Currency base options should be created", () => {
   createBaseCurrencyOptions(currencies);
-  expect(document.querySelectorAll('#base-currency option').length).toBe(163);
+  expect(document.querySelectorAll("#base-currency option").length).toBe(163);
 });
 
-test('Currency target options should be created', () => {
+test("Currency target options should be created", () => {
   createTargetCurrencyOptions(currencies);
-  expect(document.querySelectorAll('#target-currency option').length).toBe(163);
+  expect(document.querySelectorAll("#target-currency option").length).toBe(163);
 });
 
-test('Exchange executes on valid Target currency, skips otherwise', () => {
-  document.querySelector('#base-amount').value = 1;
-  document.querySelector('#target-currency').value = 'ARS';
-  $('#base-amount').trigger('oninput');
-  expect(document.querySelector('#target-amount').value).toBe('142.1134');
+test("Exchange executes on valid Target currency, skips otherwise", () => {
+  document.querySelector("#base-amount").value = 1;
+  document.querySelector("#target-currency").value = "ARS";
+  $("#base-amount").trigger("oninput");
+  expect(document.querySelector("#target-amount").value).toBe("142.1134");
 
-  document.querySelector('#target-currency').value = '0';
-  $('#base-amount').trigger('oninput');
-  expect(document.querySelector('#target-amount').value).toBe('');
+  document.querySelector("#target-currency").value = "0";
+  $("#base-amount").trigger("oninput");
+  expect(document.querySelector("#target-amount").value).toBe("");
 });
