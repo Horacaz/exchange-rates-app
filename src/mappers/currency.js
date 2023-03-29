@@ -1,4 +1,4 @@
-import Currency from '../entities/currency.js';
+import Currency from "../entities/currency.js";
 
 export default async function mapCurrency(currencyData) {
   const {
@@ -7,9 +7,5 @@ export default async function mapCurrency(currencyData) {
     time_last_update_utc: lastUpdate,
   } = currencyData;
 
-  return new Currency(
-    baseCode,
-    conversionRates,
-    lastUpdate,
-  );
+  return new Currency(baseCode, conversionRates, lastUpdate);
 }

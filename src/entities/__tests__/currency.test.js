@@ -1,12 +1,13 @@
 /// <reference types = '@types/jest' />
 
-import Currency from '../currency.js';
+import Currency from "../currency.js";
 
-test('Currencies should return an object from data', () => {
+test("Currencies should return an object from data", () => {
   const baseCode = {};
   const conversionRates = {};
   const lastUpdate = {};
 
-  expect(new Currency(baseCode, conversionRates, lastUpdate))
-    .toBeInstanceOf(Currency);
+  expect(new Currency(baseCode, conversionRates, lastUpdate)).toBeInstanceOf(
+    Currency
+  );
 });

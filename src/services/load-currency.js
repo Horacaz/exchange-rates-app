@@ -1,8 +1,14 @@
-import { getCurrenciesNamesFromStorage, getCurrencyRatesFromStorage } from '../storage/storage.js';
+import {
+  getCurrenciesNamesFromStorage,
+  getCurrencyRatesFromStorage,
+} from "../storage/storage.js";
 
-import { getCurrenciesNamesFromApi, getCurrencyRatesFromApi } from '../api/exchange.js';
+import {
+  getCurrenciesNamesFromApi,
+  getCurrencyRatesFromApi,
+} from "../api/exchange.js";
 
-export function getCurrencyRates(base = 'USD') {
+export function getCurrencyRates(base = "USD") {
   try {
     return getCurrencyRatesFromStorage(base);
   } catch (error) {

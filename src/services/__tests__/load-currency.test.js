@@ -1,19 +1,18 @@
 /// <reference types ='@types/jest' />
-import {
-  getCurrencyRates,
-  getCurrenciesNames,
-} from '../load-currency.js';
+import { getCurrencyRates, getCurrenciesNames } from "../load-currency.js";
 
-import * as api from '../../api/exchange.js';
-import * as storage from '../../storage/storage.js';
+import * as api from "../../api/exchange.js";
+import * as storage from "../../storage/storage.js";
 
 beforeEach(() => jest.clearAllMocks());
 
-test('Get currency rates from localStorage if available', () => {
-  const mockStorage = jest.spyOn(storage, 'getCurrencyRatesFromStorage')
+test("Get currency rates from localStorage if available", () => {
+  const mockStorage = jest
+    .spyOn(storage, "getCurrencyRatesFromStorage")
     .mockImplementationOnce(() => {});
 
-  const mockApi = jest.spyOn(api, 'getCurrencyRatesFromApi')
+  const mockApi = jest
+    .spyOn(api, "getCurrencyRatesFromApi")
     .mockImplementationOnce(() => {});
 
   getCurrencyRates();
@@ -21,11 +20,13 @@ test('Get currency rates from localStorage if available', () => {
   expect(mockApi).toHaveBeenCalledTimes(0);
 });
 
-test('Get currency names from api from localStorage if available', () => {
-  const mockStorage = jest.spyOn(storage, 'getCurrenciesNamesFromStorage')
+test("Get currency names from api from localStorage if available", () => {
+  const mockStorage = jest
+    .spyOn(storage, "getCurrenciesNamesFromStorage")
     .mockImplementationOnce(() => {});
 
-  const mockApi = jest.spyOn(api, 'getCurrenciesNamesFromApi')
+  const mockApi = jest
+    .spyOn(api, "getCurrenciesNamesFromApi")
     .mockImplementationOnce(() => {});
 
   getCurrenciesNames();
@@ -33,11 +34,13 @@ test('Get currency names from api from localStorage if available', () => {
   expect(mockApi).toHaveBeenCalledTimes(0);
 });
 
-test('Gets currency rates from api if not available on localStorage', () => {
-  const mockStorage = jest.spyOn(storage, 'getCurrencyRatesFromStorage');
-  mockStorage.mockImplementationOnce(() => { throw new Error(); });
+test("Gets currency rates from api if not available on localStorage", () => {
+  const mockStorage = jest.spyOn(storage, "getCurrencyRatesFromStorage");
+  mockStorage.mockImplementationOnce(() => {
+    throw new Error();
+  });
 
-  const mockApi = jest.spyOn(api, 'getCurrencyRatesFromApi');
+  const mockApi = jest.spyOn(api, "getCurrencyRatesFromApi");
   mockApi.mockImplementationOnce(() => {});
 
   getCurrencyRates();
@@ -45,11 +48,15 @@ test('Gets currency rates from api if not available on localStorage', () => {
   expect(mockApi).toHaveBeenCalledTimes(1);
 });
 
-test('Gets currency names from api if not available on localStorage', () => {
-  const mockStorage = jest.spyOn(storage, 'getCurrenciesNamesFromStorage')
-    .mockImplementationOnce(() => { throw new Error(); });
+test("Gets currency names from api if not available on localStorage", () => {
+  const mockStorage = jest
+    .spyOn(storage, "getCurrenciesNamesFromStorage")
+    .mockImplementationOnce(() => {
+      throw new Error();
+    });
 
-  const mockApi = jest.spyOn(api, 'getCurrenciesNamesFromApi')
+  const mockApi = jest
+    .spyOn(api, "getCurrenciesNamesFromApi")
     .mockImplementationOnce(() => {});
 
   getCurrenciesNames();
