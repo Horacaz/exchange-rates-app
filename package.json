@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest test.js",
-    "lint": "eslint src/** cypress/e2e prettier --write ./",
+    "lint": "eslint src/** cypress/e2e",
     "cypress:open": "cypress open",
     "start": "http-server"
   },
