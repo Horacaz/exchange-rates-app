@@ -4,10 +4,8 @@
   "description": "A simple Exchange Rate  App made using exchange-rate-api.com",
   "main": "index.js",
   "scripts": {
-    "test": "jest test.ts",
+    "test": "jest src/ && cypress run",
     "lint": "eslint src/** cypress/e2e",
-    "prettier-format": "prettier --config .prettierrc src/**/*.ts --write",
-    "cypress:open": "cypress open",
     "start": "http-server"
   },
   "author": "Horacio Cazavant",
