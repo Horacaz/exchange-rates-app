@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest src/ && cypress run",
     "lint": "eslint src/** cypress/e2e",
-    "start": "http-server"
+    "start": "http-server -c-1 dist"
   },
   "author": "Horacio Cazavant",
   "license": "MIT",

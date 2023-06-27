@@ -8,5 +8,6 @@ export default {
   },
   resolver: "ts-jest-resolver",
   transformIgnorePatterns: ['<rootDir>/node_modules/'],
-  modulePathIgnorePatterns: ["<rootDir>/dist/"]
+  modulePathIgnorePatterns: ["<rootDir>/dist/"],
+  coverageProvider: "v8",
 };
