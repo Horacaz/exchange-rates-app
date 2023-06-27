@@ -130,3 +130,7 @@ dist
 
 cypress/support
 cypress/videos
+
+# tsc
+
+build
