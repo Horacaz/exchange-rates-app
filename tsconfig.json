@@ -18,6 +18,6 @@
       "types": ["@types/jest", "jest", "cypress" ,"jsdom"],
       "allowJs": true,
     },
-    "include": ["src/**/*", "index.html"],
+    "include": ["src/**/*",],
     "exclude": ["node_modules", "dist"]
   }
