@@ -95,7 +95,7 @@ function createTargetCurrencyOptions(currencies: IParsedCurrencies) {
   const $targetCurrency = document.querySelector(
     '#target-currency'
   ) as HTMLElement;
-  const { supportedCodes } = currencies;
+  const supportedCodes = currencies.supportedCodes;
   for (let i = 0; i < supportedCodes.length; i += 1) {
     const currency = document.createElement('option');
     currency.setAttribute('value', supportedCodes[i][0]);

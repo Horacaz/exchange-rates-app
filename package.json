@@ -8,7 +8,7 @@
     "lint": "eslint src/** cypress/e2e",
     "start": "http-server -c-1 dist",
     "build": "tsc",
-    "postbuild": "copyfiles index.html dist/"
+    "postbuild": "copyfiles styles/* assets/* index.html dist/"
   },
   "author": "Horacio Cazavant",
   "license": "MIT",
