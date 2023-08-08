@@ -46,6 +46,22 @@ describe('getCurrencyRatesFromApi', () => {
 
     expect(global.fetch).toHaveBeenCalledWith(`${URL}/latest/USD`);
   });
+  test('Currency rates retrieves USD rates if no currency is specified', () => {
+    const defaultURL = "https://v6.exchangerate-api.com/v6/aa91db0af07de43e0e36201b/latest/USD";
+    global.fetch = jest.fn(
+      () =>
+        new Promise((resolve) => {
+          const jsonPromise = new Promise((r) => {
+            r({});
+          });
+          resolve({ json: () => jsonPromise } as Response);
+        })
+    );
+    getCurrencyRatesFromApi();
+    expect(global.fetch).toHaveBeenCalledTimes(1);
+    expect(global.fetch).toHaveBeenCalledWith(defaultURL);
+  });
+
   test('Currency rates of a specific currency failed to be retrieved from Api', () => {
     expect(getCurrencyRatesFromApi('USD')).rejects.toThrow("Failed to retrieve currencies rates from Api");
   });

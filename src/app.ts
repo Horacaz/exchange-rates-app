@@ -3,14 +3,16 @@ import StorageService from './services/StorageService.js';
 import ExchangeRatesService from './services/ExchangeRatesService.js';
 import handleExchange from './ui/currencyExchange.js';
 
-export default async function initialize() {
-  const ExchangeService = new ExchangeRatesService(
-    new StorageService(),
-    new CurrencyService()
+export default async function initialize(): Promise<void>{
+  const currencyService = new CurrencyService();
+  const storageService = new StorageService();
+  const exchangeService = new ExchangeRatesService(
+    storageService,
+    currencyService
   );
-  const currenciesNames = await ExchangeService.getCurrencies();
+  const currenciesNames = await exchangeService.getCurrencies();
   handleExchange(
     currenciesNames,
-    ExchangeService.getCurrencyRates.bind(ExchangeService)
+    exchangeService.getCurrencyRates.bind(exchangeService)
   );
 }

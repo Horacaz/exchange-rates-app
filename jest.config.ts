@@ -2,12 +2,16 @@ export default {
   preset: 'ts-jest',
   testEnvironment: 'node',
   transform: {
-    '^.+\\.tsx?$': [
+    '^.+\\.ts?$': [
       'ts-jest',
     ],
   },
+  collectCoverageFrom: [
+    'src/**/*.ts',
+    '!**/types/**', 
+  ],
   resolver: "ts-jest-resolver",
   transformIgnorePatterns: ['<rootDir>/node_modules/'],
   modulePathIgnorePatterns: ["<rootDir>/dist/"],
-  coverageProvider: "v8",
+  coverageProvider: "babel",
 };
