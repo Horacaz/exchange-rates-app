@@ -69,10 +69,10 @@ jobs:
         uses: cypress-io/github-action@v5.0.5
         with:
           browser: electron
-          spec: cypress/e2e/app.cy.js
           build: npm run build
           start: npm run start
           wait-on: http://127.0.0.1:8080
+          cypress: npm run cypress
   deploy:
     needs: [e2e_testing]
     runs-on: ubuntu-latest
