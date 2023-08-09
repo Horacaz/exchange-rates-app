@@ -128,7 +128,6 @@ dist
 
 # cypress
 
-cypress/support
 cypress/videos
 cypress/screenshots
 cypress/downloads
