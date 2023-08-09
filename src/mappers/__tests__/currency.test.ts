@@ -3,7 +3,7 @@ import mapCurrency from '../currency';
 import currencyFixtureData from '../../../fixtures/currency.json';
 import { IUnparsedCurrency } from '../../types/currency';
 
-jest.mock('../../entities/currency', () => jest.fn());
+jest.mock('../../entities/Currency', () => jest.fn());
 
 test('Map function should return a new currencies names from data', () => {
   const {

@@ -2,7 +2,7 @@ import Currencies from '../../entities/Currencies';
 import mapCurrencies from '../currencies';
 import currenciesNamesFixtureData from '../../../fixtures/currencies.json';
 
-jest.mock('../../entities/currencies', () => jest.fn());
+jest.mock('../../entities/Currencies', () => jest.fn());
 describe('mapCurrencies', () => {
   test('mapCurrencies is a function', () => {
     expect(typeof mapCurrencies).toEqual('function');
