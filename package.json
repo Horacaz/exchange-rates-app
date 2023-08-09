@@ -4,7 +4,8 @@
   "description": "A simple Exchange Rate  App made using exchange-rate-api.com",
   "main": "index.js",
   "scripts": {
-    "test": "jest src/ && cypress run",
+    "test": "jest src",
+    "cypress": "cypress run",
     "lint": "eslint src/** cypress/e2e",
     "start": "http-server -c-1 dist",
     "dev": "tsc -w",
@@ -22,10 +23,10 @@
   },
   "devDependencies": {
     "@types/jest": "^28.1.5",
-    "@typescript-eslint/eslint-plugin": "^5.60.0",
-    "@typescript-eslint/parser": "^5.60.0",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
     "cypress": "^10.2.0",
-    "eslint": "^8.43.0",
+    "eslint": "^8.46.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-cypress": "^2.12.1",
@@ -35,6 +36,6 @@
     "jest-environment-jsdom": "^28.1.3",
     "prettier": "^2.8.7",
     "ts-jest": "^29.1.0",
-    "typescript": "^5.1.3"
+    "typescript": "^5.1.6"
   }
 }

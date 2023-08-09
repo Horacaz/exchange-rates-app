@@ -70,5 +70,6 @@ jobs:
         with:
           browser: electron
           spec: cypress/e2e/app.cy.js
+          build: npm run build
           start: npm run start
           wait-on: http://127.0.0.1:8080
